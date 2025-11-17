@@ -44,7 +44,8 @@ Il metodo d'installazione che consigliamo per il progetto utilizza uv e venv e s
    OPPURE
    pip install pandas seaborn matplotlib scikit-learn
    ```
-  
+5. Usare i file!
+   **[WIP]**
 ---
 
 ## 🛠️ Metodologia e Tecniche Utilizzate
