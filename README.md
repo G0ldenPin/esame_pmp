@@ -82,7 +82,5 @@ Questo progetto è frutto della collaborazione tra i seguenti membri:
 
 | Nome e Cognome | Contributo Principale |
 | :--- | :--- |
-| **Lisa G. Bassetti** | 
-**[WIP]**|
-| **Matteo COtugno** | 
-**[WIP]** |
+| **Lisa G. Bassetti** | **[WIP]**|
+| **Matteo Cotugno** | **[WIP]** |
