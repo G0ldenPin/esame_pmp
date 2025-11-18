@@ -6,7 +6,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from sklearn.preprocessing import LabelEncoder
 # -----------------------------
-# 1️⃣ Scaricare il dataset
+# 1. Scaricare il dataset
 # -----------------------------
 mushroom = fetch_ucirepo(id=73) #scarica il dataset dei funghi (Mushroom) dal repository UCI.
 X = mushroom.data.features #prende le features
@@ -15,7 +15,7 @@ df = pd.concat([X, y], axis=1) #unisce in un singolo dataframe
 target_col = df.columns[-1] #memorizza colonna target(ultima colonna del df)
 
 # -----------------------------
-# 2️⃣ Funzioni per i grafici
+# 2️. Funzioni per i grafici
 # -----------------------------
 def grafico_target():
     plt.figure(figsize=(6,4)) #dim grafico
@@ -67,7 +67,7 @@ def heatmap_correlazioni():
     plt.show()
 
 # -----------------------------
-# 3️⃣ Funzioni GUI
+# 3️. Funzioni GUI
 # -----------------------------
 def open_feature_window():
     feature_win = tk.Toplevel(root)
@@ -90,7 +90,7 @@ def open_feature_window():
     tk.Button(feature_win, text="Mostra grafico", command=show_feature_plot).pack(pady=10)
 
 # -----------------------------
-# 4️⃣ Creazione GUI principale
+# 4️. Creazione GUI principale
 # -----------------------------
 root = tk.Tk()
 root.title("Visualizzatore Funghi 🍄")
