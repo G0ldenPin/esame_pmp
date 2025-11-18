@@ -1,13 +1,16 @@
-# esame_pmp
-Progetto A.A. 2025/2026 per Principi e Modelli della Percezione in Università degli Studi di Milano
-
-# 🍄 Progetto di Machine Learning: Classificazione dei Funghi (Mushroom Dataset)
+# 🍄 Visualizzatore Interattivo del Dataset Mushroom
+Progetto A.A. 2025/2026 – Principi e Modelli della Percezione
+Università degli Studi di Milano
 
 ## 🌟 Panoramica del Progetto
 
-Questo progetto è stato sviluppato come parte dell'esame di **Principi e Modelli della Percezione** ed è un'analisi collaborativa incentrata sulla classificazione del dataset **Mushroom** proveniente dall'archivio UCI.
+L’obiettivo di questo progetto è analizzare il dataset Mushroom dell’UCI Machine Learning Repository e costruire un modello di classificazione in grado di prevedere se un fungo è edibile (e) o velenoso (p) basandosi su caratteristiche osservabili a vista. Il progetto si articola in tre parti:
 
-L'obiettivo principale è sviluppare un modello di Machine Learning (ML) robusto, in grado di predire con alta affidabilità se un fungo è **commestibile** (*edible*) o **velenoso** (*poisonous*), basandosi sulle sue 22 caratteristiche categoriali.
+1. Caricamento e pulizia dei dati
+2. Visualizzazione e analisi esplorativa
+3. Modello di classificazione (Decision Tree + altri algoritmi)
+
+Tutto il codice è implementato in Python, utilizzando librerie scientifiche standard e import vari per migliorare la qualità dell'output.
 
 ---
 
@@ -21,43 +24,55 @@ Il dataset di riferimento è l'**UCI Mushroom Dataset** (fonte: [https://archive
 
 ---
 
+## 📦 Istruzioni per l'utilizzo
+
+Il metodo d'installazione che consigliamo per il progetto utilizza uv e venv e si articola nei seguenti passaggi:
+1. Installa venv tramite python
+2. Installa uv tramite pip
+   ```
+   pip install uv
+   ```
+   N.B. Se non è già installato, installare anche pip.
+3. Crea l'ambiente virtuale usando uv
+   ```
+   uv venv
+   source .venv/bin/activate
+   ```
+4. Installare le dipendenze
+   ```
+   uv pip install pandas seaborn matplotlib scikit-learn
+   OPPURE
+   pip install pandas seaborn matplotlib scikit-learn
+   ```
+5. Usare i file!
+   **[WIP]**
+---
+
 ## 🛠️ Metodologia e Tecniche Utilizzate
+**[WIP]**
 
-### 1. Exploratory Data Analysis (EDA)
-È stata eseguita un'analisi esplorativa per comprendere la distribuzione delle classi e delle singole caratteristiche, identificando le variabili più correlate con la tossicità.
+---
 
-### 2. Pre-elaborazione dei Dati
-Dato che il dataset è composto interamente da variabili categoriali, è stata necessaria una trasformazione:
-* **Tecnica:** **[Specificare la tecnica usata, es.: One-Hot Encoding]** è stata applicata per convertire gli attributi in un formato numerico (0 e 1) adatto ai modelli di ML.
-* **Suddivisione:** I dati sono stati suddivisi in set di addestramento e di test.
+🌳 6. Visualizzazione dell’Albero Decisionale
 
-### 3. Modellazione
-È stato implementato un modello di Classificazione per predire la classe target.
+Il progetto include:
 
-* **Tecnica ML Scelta:** **[Inserire il modello esatto, es.: Random Forest Classifier, Rete Neurale Multistrato]**
-* **Libreria:** Utilizzo della libreria **[Specificare la libreria, es.: Scikit-learn, TensorFlow/Keras]**.
-* **Valutazione:** Le performance del modello sono state valutate utilizzando le metriche **[Specificare le metriche, es.: Accuracy, Precision, Recall, Matrice di Confusione]**.
+**[WIP]**
+
+Esempio di regole osservate:
+**[WIP]**
 
 ---
 
 ## 📊 Risultati Ottenuti
 
-Il modello **[Nome del Modello]** ha dimostrato **[Inserire una breve descrizione del risultato, es.: un'elevatissima capacità predittiva]**, ottenendo i seguenti risultati sul *test set*:
-
-* **Accuracy:** **[Inserire la percentuale di Accuracy, es.: 99.98%]**
-* **[Inserire un'altra metrica chiave, es.: F1-Score]:** **[Inserire il valore]**
-
-**[Aggiungere una breve conclusione sui risultati, es.: La classificazione ha dimostrato che il modello è quasi perfetto nel distinguere i funghi velenosi da quelli commestibili.]**
+**[WIP]**
 
 ---
 
 ## 📂 Contenuti del Repository
 
-Questo repository contiene i seguenti file principali:
-
-* `[Nome del Notebook/Script principale, es.: mushroom_classification.ipynb]`: Il codice Python completo che include EDA, pre-elaborazione, addestramento del modello e valutazione.
-* `requirements.txt`: Elenco delle librerie Python necessarie per eseguire il progetto.
-
+**[WIP]**
 
 
 ---
@@ -68,5 +83,5 @@ Questo progetto è frutto della collaborazione tra i seguenti membri:
 
 | Nome e Cognome | Contributo Principale |
 | :--- | :--- |
-| **Lisa G. Bassetti** | [Specificare il ruolo, es.: Sviluppo del modello di Classificazione e Documentazione del codice] |
-| **Matteo COtugno** | [Specificare il ruolo, es.: Acquisizione dati, Pre-elaborazione (One-Hot Encoding) e EDA (Analisi Esplorativa)] |
+| **Lisa G. Bassetti** | **[WIP]**|
+| **Matteo Cotugno** | **[WIP]** |
