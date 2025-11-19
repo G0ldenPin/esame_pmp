@@ -71,7 +71,7 @@ print("Apri quel file per vedere le percentuali.")
 
 # 5. GRAFICO (Migliorato con Titolo Informativo)
 plt.figure(figsize=(10, 7))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', annot_kws={"size": 14},
+sns.heatmap(cm, annot=True, fmt='d', cmap='Set2', annot_kws={"size": 14},
             xticklabels=['Pred: Commestibile', 'Pred: Velenoso'],
             yticklabels=['Reale: Commestibile', 'Reale: Velenoso'])
 
