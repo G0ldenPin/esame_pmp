@@ -44,8 +44,16 @@ Il metodo d'installazione che consigliamo per il progetto utilizza uv e venv e s
    OPPURE
    pip install pandas seaborn matplotlib scikit-learn
    ```
-5. Usare i file!
-   **[WIP]**
+**PER VISUALIZZARE I DATI**
+ 1. Nella cartella *visualization*, utilizzare il file *funghi.py*
+    comparirà una GUI dedicata alla visualizzazione dei grafici.
+ 2. Utilizzare la GUI per scegliere che grafico visualizzare.
+
+**PER UTILIZZARE L'ANALIZZATORE DI FUNGHI**
+1. Nella cartella *poison_analysis* utilizzare il file *data_setup.py* per generare il file csv utilizzato dal modello.
+2. Utilizzare il file *poison_tester_gui.py* per utilizzare la GUI dedicata al tool.
+3. Per analizzare le prestazioni del modello utilizzare il file *test_stats.py*, che genererà un report dettagliato sulle analisi dell'accuratezza. 
+
 ---
 
 ## 🛠️ Metodologia e Tecniche Utilizzate
@@ -53,7 +61,7 @@ Il metodo d'installazione che consigliamo per il progetto utilizza uv e venv e s
 
 ---
 
-🌳 6. Visualizzazione dell’Albero Decisionale
+🌳 Albero Decisionale
 
 Il progetto include:
 
@@ -66,7 +74,36 @@ Esempio di regole osservate:
 
 ## 📊 Risultati Ottenuti
 
-**[WIP]**
+I seguenti risultati sono ottenuti dall'ultima run del codice eseguita prima della consegna del progetto il 26/11/25.
+
+=============================================
+REPORT STATISTICO COMPLETO - MUSHROOM DATASET
+=============================================
+
+1. ACCURATEZZA (Cross-Validation 5-fold)
+----------------------------------------
+Media: 90.69%
+Deviazione Standard: +/- 10.36%
+
+2. REPORT DI CLASSIFICAZIONE
+----------------------------------------
+              precision    recall  f1-score   support
+
+Commestibile       0.99      1.00      0.99      1263
+    Velenoso       1.00      0.99      0.99      1175
+
+    accuracy                           0.99      2438
+   macro avg       0.99      0.99      0.99      2438
+weighted avg       0.99      0.99      0.99      2438
+
+
+3. DETTAGLIO ERRORI (Matrice di Confusione)
+----------------------------------------
+Su un totale di 2438 funghi testati:
+- Veri Negativi (Commestibili corretti): 1258
+- Veri Positivi (Velenosi corretti):     1165
+- Falsi Positivi (Allarmi inutili):      5
+- Falsi Negativi (PERICOLOSI):           10 <--- Questo numero deve essere 0!
 
 ---
 
@@ -83,5 +120,5 @@ Questo progetto è frutto della collaborazione tra i seguenti membri:
 
 | Nome e Cognome | Contributo Principale |
 | :--- | :--- |
-| **Lisa G. Bassetti** | **[WIP]**|
-| **Matteo Cotugno** | **[WIP]** |
+| **Lisa G. Bassetti** | Decision Tree |
+| **Matteo Cotugno** | Data Visualization |
