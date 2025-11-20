@@ -116,7 +116,7 @@ Per visualizzare localmente le statistiche dei risultati del modello si può uti
     *   `data_setup.py`: Script per il setup iniziale dei dati che genera un file `mushrooms.csv`, **fondamentale** per il funzionamento di `poison_model.py` e `posion_tester_gui.py`.
     *   `test_stats-py`: Script per generare un file testuale con le statistiche del modello di ML e la confusion matrix del modello.
 *   `visualization/`: Cartella contenente tutto il necessario per la visualizzazione grafica del dataframe.
-    * [aggiungi qui i tuoi file matteo pls]
+    *   `VisualKmodes.py`: Script contenente la visualizzazione dell'algoritmo K-Modes
 *   `README.md`: Questo file.
 
 ---
