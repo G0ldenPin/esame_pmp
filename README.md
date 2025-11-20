@@ -33,7 +33,7 @@ Per il setup del progetto consigliamo di usare PyCharm come IDE per la sua sempl
     git clone https://github.com/G0ldenPin/esame_pmp
     ```
 2.  **Apri il progetto e installa le dipendenze** in PyCharm:
-    ![Pycharm lib installer](md_images/pyinstaller.png)
+    <img width="596" height="309" alt="pyinstaller" src="https://github.com/user-attachments/assets/a76cceea-aeaa-4958-87c5-23a568535703" />
     
     **N.B.** una lista completa delle dipendenze è disponibile alla fine di questo tutorial.
 3.  **Prepara i dati** (da eseguire solo la prima volta):
