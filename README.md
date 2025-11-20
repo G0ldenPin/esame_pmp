@@ -114,9 +114,9 @@ Per visualizzare localmente le statistiche dei risultati del modello si può uti
     *   `poison_model.py`: Script che definisce, addestra e gestisce il classificatore `MushroomClassifier`.
     *   `poison_tester_gui.py`: L'applicazione con interfaccia grafica (basata su Tkinter) per testare il modello.
     *   `data_setup.py`: Script per il setup iniziale dei dati che genera un file `mushrooms.csv`, **fondamentale** per il funzionamento di `poison_model.py` e `posion_tester_gui.py`.
-    *   `test_stats-py`: Script per generare un file testuale con le statistiche del modello di ML.
+    *   `test_stats-py`: Script per generare un file testuale con le statistiche del modello di ML e la confusion matrix del modello.
 *   `visualization/`: Cartella contenente tutto il necessario per la visualizzazione grafica del dataframe.
-    * [aggiungi qui i tuoi file matteo]
+    * [aggiungi qui i tuoi file matteo pls]
 *   `README.md`: Questo file.
 
 ---
