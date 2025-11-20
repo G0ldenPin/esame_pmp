@@ -6,11 +6,11 @@ Università degli Studi di Milano
 
 L’obiettivo di questo progetto è analizzare il dataset Mushroom dell’UCI Machine Learning Repository e costruire un modello di classificazione in grado di prevedere se un fungo è edibile (e) o velenoso (p) basandosi su caratteristiche osservabili a vista. Il progetto si articola in tre parti:
 
-1.  **Caricamento e preparazione dei dati**: Il dataset originale viene caricato e preparato per l'analisi.
-2.  **Addestramento del modello**: Viene addestrato un classificatore (Decision Tree) per distinguere i funghi velenosi da quelli commestibili.
-3.  **Interfaccia utente (GUI)**: È stata sviluppata un'applicazione grafica che permette di interrogare il modello, inserendo le caratteristiche di un fungo per ottenerne una predizione sulla commestibilità.
+1. Caricamento e pulizia dei dati
+2. Visualizzazione e analisi esplorativa
+3. Modello di classificazione (Decision Tree + altri algoritmi)
 
-Tutto il codice è implementato in Python, utilizzando librerie scientifiche standard come Pandas e Scikit-learn.
+Tutto il codice è implementato in Python, utilizzando librerie scientifiche standard e import vari per migliorare la qualità dell'output.
 
 ---
 
@@ -18,106 +18,99 @@ Tutto il codice è implementato in Python, utilizzando librerie scientifiche sta
 
 Il dataset di riferimento è l'**UCI Mushroom Dataset** (fonte: [https://archive.ics.uci.edu/dataset/73/mushroom](https://archive.ics.uci.edu/dataset/73/mushroom)).
 
-*   **Fonte:** UCI Machine Learning Repository
-*   **Target:** La variabile di classe (prima colonna) indica se il fungo è **'e'** (edible/commestibile) o **'p'** (poisonous/velenoso).
-*   **Caratteristiche:** 22 attributi (tutti categoriali) che descrivono aspetti come forma del cappello, colore, odore, ecc. Per questo progetto, sono state selezionate 5 feature principali per l'addestramento.
+* **Fonte:** UCI Machine Learning Repository
+* **Target:** La variabile di classe (prima colonna) indica se il fungo è **'e'** (edible/commestibile) o **'p'** (poisonous/velenoso).
+* **Caratteristiche:** 22 attributi (tutti categoriali) che descrivono aspetti come forma del cappello, colore, odore, ecc.
 
 ---
 
 ## 📦 Istruzioni per l'utilizzo
 
-Per il setup del progetto consigliamo di usare PyCharm come IDE per la sua semplicità nell'installazione delle dipendenze.
+Il metodo d'installazione che consigliamo per il progetto utilizza uv e venv e si articola nei seguenti passaggi:
+1. Installa venv tramite python
+2. Installa uv tramite pip
+   ```
+   pip install uv
+   ```
+   N.B. Se non è già installato, installare anche pip.
+3. Crea l'ambiente virtuale usando uv
+   ```
+   uv venv
+   source .venv/bin/activate
+   ```
+4. Installare le dipendenze
+   ```
+   uv pip install pandas seaborn matplotlib scikit-learn
+   OPPURE
+   pip install pandas seaborn matplotlib scikit-learn
+   ```
+**PER VISUALIZZARE I DATI**
+ 1. Nella cartella *visualization*, utilizzare il file *funghi.py*
+    comparirà una GUI dedicata alla visualizzazione dei grafici.
+ 2. Utilizzare la GUI per scegliere che grafico visualizzare.
 
-1.  **Copia la repo**:
-    ```bash
-    git clone https://github.com/G0ldenPin/esame_pmp
-    ```
-2.  **Apri il progetto e installa le dipendenze** in PyCharm:
-    ![Pycharm lib installer](md_images/pyinstaller.png)
-    
-    **N.B.** una lista completa delle dipendenze è disponibile alla fine di questo tutorial.
-3.  **Prepara i dati** (da eseguire solo la prima volta):
-    Questo comando scarica il dataset e crea `mushrooms.csv`.
-    ```bash
-    python data_setup.py
-    ```
-4.  **Addestra il modello e visualizza l'albero**:
-    Questo comando ri-addestra il modello e genera l'immagine `decision_tree.png`.
-    ```bash
-    python poison_model.py
-    ```
-5.  **Avvia la GUI per testare il modello**:
-    ```bash
-    python poison_tester_gui.py
-    ```
-6.  **Genera statistiche di valutazione**:
-    Questo comando crea il file `report_statistiche.txt`.
-    ```bash
-    python test_stats.py
-    ```
-7. **Visualizza i dati** che ti servono tramite grafici:
-   ```bash
-    python funghiPrototipo.py
-    ```
-   
-**LISTA DELLE DIPENDENZE** :
-
-* **pandas**: Libreria per la manipolazione e l'analisi di dati, usata per gestire il dataset dei funghi in tabelle.
-* **matplotlib**: Libreria per la creazione di grafici e visualizzazioni.
-* **seaborn**: Basata su matplotlib, semplifica la creazione di grafici statistici esteticamente gradevoli.
-* **ucimlrepo**: Libreria specifica per scaricare dataset dall'UCI Machine Learning Repository.
-* **tkinter**: La libreria standard di Python per creare interfacce grafiche (GUI).
-* **scikit-learn**: Fornisce l'algoritmo `DecisionTreeClassifier` e strumenti per la preparazione dei dati e la valutazione del modello.
-* **requests**: Libreria per effettuare richieste HTTP.
-* **io**: Modulo standard di Python per gestire flussi di dati.
+**PER UTILIZZARE L'ANALIZZATORE DI FUNGHI**
+1. Nella cartella *poison_analysis* utilizzare il file *data_setup.py* per generare il file csv utilizzato dal modello.
+2. Utilizzare il file *poison_tester_gui.py* per utilizzare la GUI dedicata al tool.
+3. Per analizzare le prestazioni del modello utilizzare il file *test_stats.py*, che genererà un report dettagliato sulle analisi dell'accuratezza. 
 
 ---
 
 ## 🛠️ Metodologia e Tecniche Utilizzate
-
-Il cuore del progetto è un `DecisionTreeClassifier` dalla libreria `scikit-learn`.
-
-1.  **Preparazione Dati**: Le feature testuali (es. "Marrone", "Convesso") vengono convertite in valori numerici tramite `LabelEncoder`, poiché i modelli di machine learning operano su dati numerici.
-2.  **Addestramento**: Il modello viene addestrato (`fit`) utilizzando un sottoinsieme di feature selezionate (`cap-shape`, `cap-color`, `gill-color`, `stalk-shape`, `odor`) e la variabile target ('class'). L'algoritmo impara a creare una struttura ad albero basata su domande (es. "L'odore è pungente?"), ottimizzata per separare i funghi commestibili da quelli velenosi.
-3.  **Predizione**: L'interfaccia grafica raccoglie gli input dell'utente, li codifica numericamente usando gli stessi `LabelEncoder` dell'addestramento e li passa al modello per ottenere una predizione ('e' o 'p').
+**[WIP]**
 
 ---
 
-## 🌳 Visualizzazione dell’Albero Decisionale
+🌳 Albero Decisionale
 
-Il progetto include la possibilità di visualizzare l'albero decisionale per comprendere come il modello prende le sue decisioni. Eseguendo lo script `poison_model.py`, viene generata e salvata un'immagine (`decision_tree.png`) che mostra l'albero completo.
+Il progetto include:
 
-La feature più importante, scelta come radice dell'albero, è quasi sempre l'**odore (`odor`)**, poiché è il singolo attributo più informativo per determinare la velenosità di un fungo in questo dataset.
+**[WIP]**
 
-**Esempio di regole osservate dall'albero**:
-*   Se `odor` = `pungent` (p) O `fetid` (f) -> **Velenoso**
-*   Se `odor` = `none` (n) E `gill-color` = `buff` (b) -> **Velenoso**
-*   Se `odor` = `almond` (a) O `anise` (l) -> **Commestibile**
-
-Queste regole mostrano come il modello naviga tra le caratteristiche per arrivare a una classificazione.
+Esempio di regole osservate:
+**[WIP]**
 
 ---
 
 ## 📊 Risultati Ottenuti
 
-Il modello `DecisionTreeClassifier` addestrato sul dataset completo raggiunge un'accuratezza molto elevata, di circa il 90% (all'ultimo test eseguito prima della consegna), nel classificare correttamente i funghi del training set. Questo indica che le feature selezionate sono sufficientemente potenti da creare regole di separazione molto precise.
+I seguenti risultati sono ottenuti dall'ultima run del codice eseguita prima della consegna del progetto il 26/11/25.
 
-L'interfaccia grafica, permette a chiunque di sfruttare la potenza del modello senza alcuna conoscenza di programmazione, fornendo un'esperienza utente semplice e immediata per la classificazione.
+=============================================
+REPORT STATISTICO COMPLETO - MUSHROOM DATASET
+=============================================
 
-Per visualizzare localmente le statistiche dei risultati del modello si può utilizzare il file  `test_stats.py`
+1. ACCURATEZZA (Cross-Validation 5-fold)
+----------------------------------------
+Media: 90.69%
+Deviazione Standard: +/- 10.36%
+
+2. REPORT DI CLASSIFICAZIONE
+----------------------------------------
+              precision    recall  f1-score   support
+
+Commestibile       0.99      1.00      0.99      1263
+    Velenoso       1.00      0.99      0.99      1175
+
+    accuracy                           0.99      2438
+   macro avg       0.99      0.99      0.99      2438
+weighted avg       0.99      0.99      0.99      2438
+
+
+3. DETTAGLIO ERRORI (Matrice di Confusione)
+----------------------------------------
+Su un totale di 2438 funghi testati:
+- Veri Negativi (Commestibili corretti): 1258
+- Veri Positivi (Velenosi corretti):     1165
+- Falsi Positivi (Allarmi inutili):      5
+- Falsi Negativi (PERICOLOSI):           10 <--- Questo numero deve essere 0!
 
 ---
 
 ## 📂 Contenuti del Repository
 
-*   `poison_analysis/`: Cartella contenente il modello di ML e i relativi script di funzionamento.
-    *   `poison_model.py`: Script che definisce, addestra e gestisce il classificatore `MushroomClassifier`.
-    *   `poison_tester_gui.py`: L'applicazione con interfaccia grafica (basata su Tkinter) per testare il modello.
-    *   `data_setup.py`: Script per il setup iniziale dei dati che genera un file `mushrooms.csv`, **fondamentale** per il funzionamento di `poison_model.py` e `posion_tester_gui.py`.
-    *   `test_stats-py`: Script per generare un file testuale con le statistiche del modello di ML.
-*   `visualization/`: Cartella contenente tutto il necessario per la visualizzazione grafica del dataframe.
-    * [aggiungi qui i tuoi file matteo]
-*   `README.md`: Questo file.
+**[WIP]**
+
 
 ---
 
@@ -125,7 +118,7 @@ Per visualizzare localmente le statistiche dei risultati del modello si può uti
 
 Questo progetto è frutto della collaborazione tra i seguenti membri:
 
-| Nome e Cognome     | Contributo Principale           |
-| :----------------- |:--------------------------------|
-| **Lisa G. Bassetti** | Poison analysis e decision tree |
-| **Matteo Cotugno**   | Data visualization e GUI        |
+| Nome e Cognome | Contributo Principale |
+| :--- | :--- |
+| **Lisa G. Bassetti** | Decision Tree |
+| **Matteo Cotugno** | Data Visualization |
