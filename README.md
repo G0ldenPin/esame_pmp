@@ -57,7 +57,7 @@ Per il setup del progetto consigliamo di usare PyCharm come IDE per la sua sempl
     ```
 7. **Visualizza i dati** che ti servono tramite grafici:
    ```bash
-    python funghiPrototipo.py
+    python VisualKmodes.py
     ```
    
 **LISTA DELLE DIPENDENZE** :
