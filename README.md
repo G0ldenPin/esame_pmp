@@ -33,7 +33,7 @@ Per il setup del progetto consigliamo di usare PyCharm come IDE per la sua sempl
     git clone https://github.com/G0ldenPin/esame_pmp
     ```
 2.  **Apri il progetto e installa le dipendenze** in PyCharm:
-    ![Pycharm lib installer](md_images/pyinstaller.png)
+    ![Pycharm lib installer](/md_images/pyinstaller.png)
     
     **N.B.** una lista completa delle dipendenze è disponibile alla fine di questo tutorial.
 3.  **Prepara i dati** (da eseguire solo la prima volta):
@@ -51,20 +51,20 @@ Per il setup del progetto consigliamo di usare PyCharm come IDE per la sua sempl
 4.  **Addestra il modello e visualizza l'albero**:
     Questo comando ri-addestra il modello e genera l'immagine `decision_tree.png`.
     ```bash
-    python poison_model.py
+    python3 poison_analysis/poison_model.py
     ```
 5.  **Avvia la GUI per testare il modello**:
     ```bash
-    python poison_tester_gui.py
+    python3 poison_analysis/poison_tester_gui.py
     ```
 6.  **Genera statistiche di valutazione**:
     Questo comando crea il file `report_statistiche.txt`.
     ```bash
-    python test_stats.py
+    python3 poison_analysis/test_stats.py
     ```
 7. **Visualizza i dati** che ti servono tramite grafici:
    ```bash
-    python funghiPrototipo.py
+    python3 visualization/finaleScaricato.py
     ```
    
 **LISTA DELLE DIPENDENZE** :
@@ -77,6 +77,7 @@ Per il setup del progetto consigliamo di usare PyCharm come IDE per la sua sempl
 * **scikit-learn**: Fornisce l'algoritmo `DecisionTreeClassifier` e strumenti per la preparazione dei dati e la valutazione del modello.
 * **requests**: Libreria per effettuare richieste HTTP.
 * **io**: Modulo standard di Python per gestire flussi di dati.
+* **kmodes**: Libreria per l'algoritmo di clustering K-Modes.
 
 ---
 
@@ -124,8 +125,8 @@ Per visualizzare localmente le statistiche dei risultati del modello si può uti
     *   `poison_tester_gui.py`: L'applicazione con interfaccia grafica (basata su Tkinter) per testare il modello.
     *   `test_stats.py`: Script per generare un file testuale con le statistiche del modello di ML e la confusion matrix del modello.
 *   `visualization/`: Cartella contenente tutto il necessario per la visualizzazione grafica del dataframe.
-    *   `VisualKmodes.py`: Script specifico per visualizzare i risultati dell'algoritmo di clustering K-Modes.
-    *   `VisualKmodesCSV.py`: Script specifico per visualizzare i risultati dell'algoritmo di clustering K-Modes utilizzando il file CSV del dataset.
+    *   `VisualKmodes.py`: Script principale per la visualizzazione dei dati tramite GUI.
+    *   `VisualKmodesCSV.py`: Script per visualizzare i risultati dell'algoritmo di clustering K-Modes utilizzando il file CSV del dataset.
 *   `README.md`: Questo file.
 
 ---
