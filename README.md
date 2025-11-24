@@ -125,6 +125,7 @@ Per visualizzare localmente le statistiche dei risultati del modello si può uti
     *   `test_stats.py`: Script per generare un file testuale con le statistiche del modello di ML e la confusion matrix del modello.
 *   `visualization/`: Cartella contenente tutto il necessario per la visualizzazione grafica del dataframe.
     *   `VisualKmodes.py`: Script specifico per visualizzare i risultati dell'algoritmo di clustering K-Modes.
+    *   `VisualKmodesCSV.py`: Script specifico per visualizzare i risultati dell'algoritmo di clustering K-Modes utilizzando il file CSV del dataset.
 *   `README.md`: Questo file.
 
 ---
@@ -136,4 +137,4 @@ Questo progetto è frutto della collaborazione tra i seguenti membri:
 | Nome e Cognome     | Contributo Principale           |
 | :----------------- |:--------------------------------|
 | **Lisa G. Bassetti** | Poison analysis e decision tree |
-| **Matteo Cotugno**   | Data visualization e GUI        |
+| **Matteo Cotugno**   | Data visualization e Clustering |
