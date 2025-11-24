@@ -77,7 +77,7 @@ class MushroomClassifier:
 
         # Separiamo le feature (colonne input -> X) dalla variabile target (la predizione -> y).
         X = df[self.features_input].copy()  # .copy() previene un warning di pandas
-        y = df['class']
+        y = df['poisonous']
 
         # trasformiamo ogni feature testuale in numeri.
         self.dizionario_encoders = {col: LabelEncoder() for col in X.columns}
@@ -120,7 +120,8 @@ class MushroomClassifier:
 
         # passiamo la lista di input numerici al metodo 'predict' del nostro modello che restituisce un array con la predizione
         # essendo che la colonna edible/poisonous è la prima controllo solo il primo valore
-        prediction_num = self.model.predict([encoded_input])[0]
+        input_df = pd.DataFrame([encoded_input], columns=self.features_input)
+        prediction_num = self.model.predict(input_df)[0]
 
         # ritrasformiamo il risultato numerico (0 o 1) nella sua etichetta testuale originale ('e' o 'p')
         result_text = self.le_target.inverse_transform([prediction_num])[0]

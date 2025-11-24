@@ -5,9 +5,16 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, confusion_matrix
+import os
 
 # 1. PREPARAZIONE (Stessa di prima)
-df = pd.read_csv('mushrooms.csv')
+script_dir = os.path.dirname(__file__)
+csv_path = os.path.join(script_dir, 'mushrooms.csv')
+df = pd.read_csv(csv_path)
+
+# Define output directory
+output_dir = os.path.join(script_dir, '..', 'data')
+os.makedirs(output_dir, exist_ok=True)
 
 features_input = [
     'cap-shape', 'cap-color', 'gill-color',
@@ -15,7 +22,7 @@ features_input = [
 ]
 
 X = df[features_input].copy()
-y = df['class']
+y = df['poisonous']
 
 for col in X.columns:
     le = LabelEncoder()
@@ -62,11 +69,11 @@ Su un totale di {len(y_test)} funghi testati:
 """
 
 # 4. SALVATAGGIO SU FILE
-nome_file = "report_statistiche.txt"
-with open(nome_file, "w") as f:
+report_path = os.path.join(output_dir, "report_statistiche.txt")
+with open(report_path, "w") as f:
     f.write(testo_output)
 
-print(f"\n✅ Fatto! Ho salvato tutti i dati nel file: {nome_file}")
+print(f"\n✅ Fatto! Ho salvato tutti i dati nel file: {report_path}")
 print("Apri quel file per vedere le percentuali.")
 
 # 5. GRAFICO (Migliorato con Titolo Informativo)
@@ -80,4 +87,6 @@ plt.ylabel('Realtà', fontsize=12)
 # Mettiamo l'accuratezza direttamente nel titolo del grafico
 plt.title(f'Matrice di Confusione\nAccuratezza Media: {accuracy_cv:.2f}%', fontsize=15)
 plt.tight_layout()
-plt.show()
+plot_path = os.path.join(output_dir, "confusion_matrix.png")
+plt.savefig(plot_path)
+plt.close()
