@@ -69,7 +69,7 @@ if 'veil-type' in df.columns:
 def grafico_target():
     #Definire la figura
     plt.figure(figsize=(6,4)) 
-    palette_color = ["#4CAF50", "#FF9800"]
+    palette_color = ["#C63636", "#5D8053"]
     sns.countplot(x=target_col, data=df, hue=target_col, palette=palette_color) #Creazione grafico a barre
     plt.legend([],[], frameon=False) #Rimuovere legenda duplicata
     plt.title("Distribuzione dei funghi commestibili e velenosi")
@@ -84,7 +84,7 @@ def grafico_feature(feature):
         return
     
     plt.figure(figsize=(8,5)) #Definire la figura          
-    palette_color = ["#4CAF50", "#FF9800"]
+    palette_color = ["#C63636", "#5D8053"]
     sns.countplot(x=feature, hue=target_col, data=df, palette=palette_color) #Creazione grafico a barre 
 
     #Impostare il titolo con la feature corretta,etichette ed ottimizzazione degli spazi       
@@ -111,7 +111,7 @@ def heatmap_correlazioni():
             M.iloc[i, j] = cramers_v(df[c1], df[c2])
 
 
-    colors = ["green", "white", "orange"]
+    colors = ["#C63636", "#FFD9A5", "#5D8053"]
     cmap = LinearSegmentedColormap.from_list("verde_arancione", colors)
 
 
@@ -163,20 +163,23 @@ def k_modes_cluster(n_clusters=2):
     plt.figure(figsize=(8,6))
 
     #Disegno dei punti
+    # Rinominiamo la colonna target per avere una legenda più chiara
+    df_plot = df.rename(columns={target_col: "Tipo di fungo"})
+
     sns.scatterplot(
         x=pca_result[:,0],
         y=pca_result[:,1],
         hue=df_encoded["Cluster"],
-        palette="Set2",
-        style=df[target_col],
-        s=100
+        palette=["#C63636", "#5D8053", "#E08B51", "#70A4A5"],
+        style=df_plot["Tipo di fungo"], # Usiamo la colonna rinominata
+        s=100,
+        markers={"edible": "o", "poisonous": "X"}
     )
 
     plt.title(f"K-Modes Clustering con {n_clusters} cluster")
     plt.xlabel("PCA 1")
     plt.ylabel("PCA 2")
-    plt.legend(title="Cluster / Target", bbox_to_anchor=(1.05,1), loc='upper left') #Legenda
-    plt.tight_layout() #Ottimizzare layout
+    plt.tight_layout()
     plt.show()
 
 # -----------------------------
@@ -222,7 +225,7 @@ title_frame.pack(fill="x")               # Riempie tutta la larghezza della fine
 # Aggiunge un'etichetta (Label) al frame del titolo
 tk.Label(
     title_frame,
-    text="🍄 VISUALIZZATORE DI FUNGI 🍄",
+    text="🍄 VISUALIZZATORE DI FUNGHI 🍄",
     font=("Helvetica", 18, "bold"),     # Font e dimensione
     fg="white",                          # Colore testo bianco
     bg="#E05151"                         # Sfondo rosso (uguale al frame)

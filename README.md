@@ -1,16 +1,19 @@
 # 🍄 Visualizzatore Interattivo del Dataset Mushroom
 Progetto A.A. 2025/2026 – Principi e Modelli della Percezione
+
 Università degli Studi di Milano
 
 ## 🌟 Panoramica del Progetto
 
-L’obiettivo di questo progetto è analizzare il dataset Mushroom dell’UCI Machine Learning Repository e costruire un modello di classificazione in grado di prevedere se un fungo è edibile (e) o velenoso (p) basandosi su caratteristiche osservabili a vista. Il progetto si articola in tre parti:
+L’obiettivo di questo progetto è analizzare il dataset Mushroom dell’UCI Machine Learning Repository e costruire un modello di classificazione in grado di prevedere se un fungo è commestibile (e) o velenoso (p) basandosi su caratteristiche osservabili a vista. Il progetto si articola in tre parti:
 
 1.  **Caricamento e preparazione dei dati**: Il dataset originale viene caricato e preparato per l'analisi.
 2.  **Addestramento del modello**: Viene addestrato un classificatore (Decision Tree) per distinguere i funghi velenosi da quelli commestibili.
 3.  **Interfaccia utente (GUI)**: È stata sviluppata un'applicazione grafica che permette di interrogare il modello, inserendo le caratteristiche di un fungo per ottenerne una predizione sulla commestibilità.
 
 Tutto il codice è implementato in Python, utilizzando librerie scientifiche standard come Pandas e Scikit-learn.
+
+È possibile visualizzare la presentazione al seguente [link](https://www.canva.com/design/DAG5CTaJpAA/8UKOVXIhY8CE6i4Solkpzg/view?utm_content=DAG5CTaJpAA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h19a2f0ff19).
 
 ---
 

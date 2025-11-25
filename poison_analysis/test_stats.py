@@ -6,6 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, confusion_matrix
 import os
+from matplotlib.colors import LinearSegmentedColormap
 
 # --- 1. PREPARAZIONE DEI DATI ---
 
@@ -105,7 +106,14 @@ print("Apri quel file per vedere le percentuali.")
 
 # Creiamo un grafico della matrice di confusione per una visualizzazione più chiara.
 plt.figure(figsize=(10, 7))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Set2', annot_kws={"size": 14},
+
+# Creiamo la colormap personalizzata
+custom_cmap = LinearSegmentedColormap.from_list(
+    'custom_heatmap',
+    ["#C63636", "#FFD9A5", "#5D8053"]
+)
+
+sns.heatmap(cm, annot=True, fmt='d', cmap=custom_cmap, annot_kws={"size": 14},
             xticklabels=['Pred: Commestibile', 'Pred: Velenoso'],
             yticklabels=['Reale: Commestibile', 'Reale: Velenoso'])
 
