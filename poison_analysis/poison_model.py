@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 # Da 'scikit-learn', una delle più importanti librerie di machine learning, importiamo
 # il 'DecisionTreeClassifier'. Questo è l'algoritmo che useremo per costruire il nostro
@@ -140,7 +141,11 @@ class MushroomClassifier:
         # Aumenta la dimensione della figura per una migliore leggibilità
         plt.figure(figsize=(40, 20))
         
-        tree.plot_tree(
+        import re
+        from matplotlib.colors import to_rgba
+        from matplotlib.text import Annotation
+
+        annotations = tree.plot_tree(
             self.model,
             feature_names=self.features_input,
             class_names=list(self.le_target.classes_),
@@ -149,11 +154,56 @@ class MushroomClassifier:
             fontsize=10
         )
         
+        # Definiamo i colori personalizzati
+        colors = {'e': "#5D8053", 'p': "#C63636"}
+        class_names = self.le_target.classes_
+
+        for artist in annotations:
+            # Applica i colori solo ai nodi (che sono oggetti Annotation)
+            if not isinstance(artist, Annotation):
+                continue
+
+            # Ottieni il box del nodo
+            box = artist.get_bbox_patch()
+            if not box:
+                continue
+
+            # Estrai il 'value' dal testo del nodo per calcolare la purezza
+            text = artist.get_text()
+            match = re.search(r'value = \[([\d\s,.]+)\]', text)
+            if not match:
+                continue
+            
+            try:
+                class_counts_str = match.group(1).split(',')
+                class_counts = np.array([float(c.strip()) for c in class_counts_str])
+            except (ValueError, IndexError):
+                continue
+
+            if np.sum(class_counts) == 0:
+                continue
+
+            # Determina la classe maggioritaria e il colore
+            majority_class_idx = np.argmax(class_counts)
+            majority_class_name = class_names[majority_class_idx]
+            color_hex = colors[majority_class_name]
+            
+            # Calcola la purezza e l'alpha per la trasparenza
+            purity = np.max(class_counts) / np.sum(class_counts)
+            alpha = 0.6 + (purity - 0.5) * 0.8 if purity > 0.5 else 0.6
+            
+            # Applica il colore
+            rgba_color = to_rgba(color_hex, alpha=alpha)
+            box.set_facecolor(rgba_color)
+        
         plt.title("Albero Decisionale per la Classificazione dei Funghi", fontsize=20)
         
-        # Salva l'immagine nella stessa cartella dello script
+        # Salva l'immagine nella cartella 'data'
         script_dir = os.path.dirname(__file__)
-        output_path = os.path.join(script_dir, output_filename)
+        project_root = os.path.abspath(os.path.join(script_dir, '..'))
+        data_dir = os.path.join(project_root, 'data')
+        os.makedirs(data_dir, exist_ok=True)
+        output_path = os.path.join(data_dir, output_filename)
         
         try:
             plt.savefig(output_path, bbox_inches='tight')

@@ -111,7 +111,7 @@ Queste regole mostrano come il modello naviga tra le caratteristiche per arrivar
 
 ## 📊 Risultati Ottenuti
 
-Il modello `DecisionTreeClassifier` addestrato sul dataset completo raggiunge un'accuratezza molto elevata, di circa il 90% (all'ultimo test eseguito prima della consegna), nel classificare correttamente i funghi del training set. Questo indica che le feature selezionate sono sufficientemente potenti da creare regole di separazione molto precise.
+Il modello `DecisionTreeClassifier` addestrato sul dataset completo raggiunge un'accuratezza molto elevata, di circa il 90% (all'ultimo test eseguito prima della consegna), nel classificare correttamente i funghi del training set. Questo indica che le feature selezionate sono sufficientemente potenti da creare regole di separazione molto precise, nonostante l'inesistenza di una regola vera e propria per la classificazione definiiva di un fungo senza conoscerne il nome.
 
 L'interfaccia grafica, permette a chiunque di sfruttare la potenza del modello senza alcuna conoscenza di programmazione, fornendo un'esperienza utente semplice e immediata per la classificazione.
 
@@ -124,7 +124,7 @@ Per visualizzare localmente le statistiche dei risultati del modello si può uti
 *   `data/`: Cartella per la gestione dei dati.
     *   `setup_dataset.py`: Script per scaricare/estrarre il dataset e distribuirlo nel progetto. **DA ESEGUIRE LA PRIMA VOLTA.**
 *   `poison_analysis/`: Cartella contenente il modello di ML e i relativi script di funzionamento.
-    *   `poison_model.py`: Script che definisce, addestra e gestisce il classificatore `MushroomClassifier`.
+    *   `poison_model.py`: Script che definisce, addestra e gestisce il classificatore `MushroomClassifier`. (Può essere eseguito più volte per riaddestrare il modello)
     *   `poison_tester_gui.py`: L'applicazione con interfaccia grafica (basata su Tkinter) per testare il modello.
     *   `test_stats.py`: Script per generare un file testuale con le statistiche del modello di ML e la confusion matrix del modello.
 *   `visualization/`: Cartella contenente tutto il necessario per la visualizzazione grafica del dataframe.
