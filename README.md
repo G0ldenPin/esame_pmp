@@ -140,5 +140,5 @@ Questo progetto è frutto della collaborazione tra i seguenti membri:
 
 | Nome e Cognome     | Contributo Principale           |
 | :----------------- |:--------------------------------|
-| **Lisa G. Bassetti** | Poison analysis e decision tree |
+| **Elijah L. G. Bassetti** | Poison analysis e decision tree |
 | **Matteo Cotugno**   | Data visualization e Clustering |
